@@ -1,15 +1,12 @@
+// 이전 제출 리팩토링
 const input = require('fs').readFileSync('/dev/stdin').toString().trim();
 const N = parseInt(input);
 
-let answer = -1;
-let idx = 1;
-let arr = [1];
-while (answer < 0) {
-    if (N === 1) {
-        answer = 1;
-        break;
-    }
-    arr.push(idx*6);
-    N <= arr.reduce((pre,cur) => pre + cur) ? answer = idx+1 : idx++;
+let count = 1;
+let range = 1;
+
+while (range < N) {
+    range += 6 * count;
+    count++;
 }
-console.log(answer);
+console.log(count);

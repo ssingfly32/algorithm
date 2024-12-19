@@ -1,7 +1,6 @@
 function solution(N, stages) {
     const temp = [];
-    const totalPlayers = stages.length;
-    
+
     for (let i = 0; i < N; i++) {
         let failedPlayers = 0;
         let clearedPlayers = 0;

@@ -8,8 +8,13 @@ function solution(participant, completion) {
     // 해시로 풀기
     const map = new Map();
     let answer = '';
-    participant.forEach(v => map.set(v, map.get(v) + 1 || 1));
-    completion.forEach(v => map.set(v, map.get(v) - 1));
+    for (const [i, person] of participant.entries()) {
+        map.set(person, map.has(person) ? map.get(person) + 1 : 1);
+        if (i < participant.length - 1) {
+            const completedRunner = completion[i];
+            map.set(completedRunner, map.has(completedRunner) ? map.get(completedRunner) - 1 : -1);            
+        }
+    }
     map.forEach((v, k) => v ? answer = k : '');
     return answer;
 }

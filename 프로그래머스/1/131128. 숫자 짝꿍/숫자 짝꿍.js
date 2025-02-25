@@ -11,9 +11,7 @@ function solution(X, Y) {
     }    
     let answer = '';
     matchedNums.forEach(v => v[1] > 0 ? answer += (v[0] + '').repeat(v[1]) : '');
-    if (answer !== '' && [...answer].every(v => v === '0')) return '0';
-    
-    return answer !== '' ? answer : '-1'; 
+    return answer === '' ? '-1' : (Number(answer) === 0 ? '0' : answer); 
 }
 
 function findTarget(target, str) {    

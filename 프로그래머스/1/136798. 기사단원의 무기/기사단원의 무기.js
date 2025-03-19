@@ -1,15 +1,14 @@
 function solution(number, limit, power) {
-    const divisors = [];
+    let total = 0;
     for (let i = 1; i <= number; i++) {
-        const temp = new Set();
+        let count = 0;
         for (let j = 1; j <= Math.sqrt(i); j++) {
-            if (i % j === 0) temp.add(j); 
+            if (i % j === 0) {
+                count++; 
+                if (j !== i / j) count++;
+            }
         }
-        for (const divisor of [...temp]) {
-            temp.add(i / divisor);
-        }
-        divisors.push([...temp]);
+        total += count > limit ? power : count;
     }
-    const answer = divisors.map(v => v.length);
-    return answer.reduce((pre, cur) => pre + (cur > limit ? power : cur), 0);
+    return total;
 }

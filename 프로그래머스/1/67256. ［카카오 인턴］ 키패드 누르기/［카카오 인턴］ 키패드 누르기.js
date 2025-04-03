@@ -14,8 +14,8 @@ function solution(numbers, hand) {
             answer += 'R';
         } else {
             const leftD = Math.abs(rc[num][0] - currentL[0]) + Math.abs(rc[num][1] - currentL[1]);
-            const leftR = Math.abs(rc[num][0] - currentR[0]) + Math.abs(rc[num][1] - currentR[1]);
-            const result = leftD === leftR ? hand[0].toUpperCase() : (leftD < leftR ? 'L' : 'R');
+            const rightD = Math.abs(rc[num][0] - currentR[0]) + Math.abs(rc[num][1] - currentR[1]);
+            const result = leftD === rightD ? hand[0].toUpperCase() : (leftD < rightD ? 'L' : 'R');
             result === 'L' ? currentL = rc[num] : currentR = rc[num];
             answer += result;
         }
